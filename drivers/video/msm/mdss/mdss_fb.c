@@ -84,14 +84,14 @@
 extern int backlight_status;
 #endif
 
-#ifdef CONFIG_OLED_SUPPORT
+/*#ifdef CONFIG_OLED_SUPPORT
 #if defined(CONFIG_MACH_LGE) && defined(CONFIG_FB_MSM_LOGO)
 static int unset_bl_level;
 #else
 static int unset_bl_level, bl_updated;
 #endif
 static int bl_level_old;
-#endif
+#endif*/
 
 static struct fb_info *fbi_list[MAX_FBI_LIST];
 static int fbi_list_index;
@@ -1089,7 +1089,7 @@ static int mdss_fb_blank_sub(int blank_mode, struct fb_info *info,
 			mfd->bl_updated = 0;
 
 #if defined(CONFIG_MACH_MSM8974_VU3_KR) || defined(CONFIG_OLED_SUPPORT)
-			   flush_work_sync(&mfd->commit_work);
+//			   flush_work_sync(&mfd->commit_work);
 #endif
 			ret = mfd->mdp.off_fnc(mfd);
 			if (ret)
